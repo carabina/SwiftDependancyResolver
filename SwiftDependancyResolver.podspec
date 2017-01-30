@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftDependancyResolver'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'A super small dependency resolver written in Swift 3.0'
  
   s.description      = <<-DESC

@@ -8,24 +8,24 @@
 
 import Foundation
 
-typealias Resolver = (() -> Any)
+public typealias Resolver = (() -> Any)
 
-enum DependancyError: Error {
+public enum DependancyError: Error {
     
     case dependancyNotFound(dependancyName: String)
     case unknownError
 }
 
-class DependancyResolver {
+public class DependancyResolver {
     
     private static var resolvers = Dictionary<String, Any>()
     
-    class func register(protocol _protocol: Any, withObject object: AnyObject) {
+    public class func register(protocol _protocol: Any, withObject object: AnyObject) {
         
         DependancyResolver.register(protocol: _protocol, withResolver: { object })
     }
     
-    class func register(protocol _protocol: Any, withResolver resolver: @escaping Resolver) {
+    public class func register(protocol _protocol: Any, withResolver resolver: @escaping Resolver) {
         
         if let protocolName = String(describing: type(of: _protocol)).components(separatedBy: ".").first {
             
@@ -33,7 +33,7 @@ class DependancyResolver {
         }
     }
     
-    class func dependancy<T>(for _protocol: T.Type) throws -> T {
+    public class func dependancy<T>(for _protocol: T.Type) throws -> T {
         
         if let protocolName = String(describing: type(of: _protocol)).components(separatedBy: ".").first {
         
